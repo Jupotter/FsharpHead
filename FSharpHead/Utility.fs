@@ -27,6 +27,7 @@ let size5 = BitSize 5
 let size6 = BitSize 6
 let size7 = BitSize 7
 
+
 let fetchBit (BitNumber n) word = (word &&& (1 <<< n)) >>> n = 1
 
 let clearBit (BitNumber n) word = word &&& (~~~(1 <<< n))
@@ -58,3 +59,15 @@ let dereferenceString address (bytes: byte array) =
 let addressOfHighByte (WordAddress address) = ByteAddress address
 
 let addressOfLowByte (WordAddress address) = ByteAddress(address + 1)
+
+let decodeWordAddress (WordZstring wordAddress) = Zstring (wordAddress * 2)
+
+let wordSize = 2
+let incWordAddrBy (WordAddress address) offset =
+  WordAddress (address + offset * wordSize)
+  
+let incWordAddr address =
+  incWordAddrBy address 1
+
+let firstAbbrevAddr (AbbreviationTableBase addr) =
+  WordAddress addr

@@ -57,4 +57,3 @@ let load filename =
       let dynamic = Array.sub file 0 dynamicLength in
       let staticA = Array.sub file dynamicLength (len - dynamicLength) in
       make dynamic staticA
-    
