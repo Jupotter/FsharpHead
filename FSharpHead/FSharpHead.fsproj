@@ -4,11 +4,15 @@
     <TargetFramework>netcoreapp3.1</TargetFramework>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="Type.fs" />
+    <Resource Include="minizork.z3" />
+    <Compile Include="Type.fs">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Compile>
     <Compile Include="Utility.fs" />
     <Compile Include="ImmutableBytes.fs" />
     <Compile Include="Story.fs" />
     <Compile Include="ZString.fs" />
+    <Compile Include="Dictionary.fs" />
     <Compile Include="Program.fs" />
   </ItemGroup>
 </Project>

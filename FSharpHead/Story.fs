@@ -57,3 +57,8 @@ let load filename =
       let dynamic = Array.sub file 0 dynamicLength in
       let staticA = Array.sub file dynamicLength (len - dynamicLength) in
       make dynamic staticA
+
+
+let dictionary_base story =
+  let dictionary_base_offset = WordAddress 8 in
+  Dictionary_base (readWord story dictionary_base_offset)

@@ -47,6 +47,8 @@ let isOutOfRange address size = not (isInRange address size)
 
 let incByteAddrBy (ByteAddress address) offset = ByteAddress(address + offset)
 
+let incByteAddr address = incByteAddrBy address 1
+
 let decByteAddrBy address offset = incByteAddrBy address (0 - offset)
 
 let dereferenceString address (bytes: byte array) =
@@ -71,3 +73,9 @@ let incWordAddr address =
 
 let firstAbbrevAddr (AbbreviationTableBase addr) =
   WordAddress addr
+
+let accumulate_strings_loop to_string start max =
+  let rec aux acc i =
+    if i >= max then acc
+    else aux (acc + (to_string i)) (i + 1) in
+  aux "" start
