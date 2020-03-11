@@ -62,3 +62,24 @@ let load filename =
 let dictionary_base story =
   let dictionary_base_offset = WordAddress 8 in
   Dictionary_base (readWord story dictionary_base_offset)
+
+let version_offset = ByteAddress 0
+let version story =
+  match readByte story version_offset with
+  | 1 -> V1
+  | 2 -> V2
+  | 3 -> V3
+  | 4 -> V4
+  | 5 -> V5
+  | 6 -> V6
+  | 7 -> V7
+  | 8 -> V8
+  | _ -> failwith "unknown version"
+
+let v3_or_lower = function
+  | V1  | V2  | V3 -> true
+  | V4  | V5  | V6  | V7  | V8 -> false
+
+let object_table_base story =
+  let object_table_base_offset = WordAddress 10 in
+  Object_base (readWord story object_table_base_offset)

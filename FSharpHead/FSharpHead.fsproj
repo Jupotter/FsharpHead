@@ -13,6 +13,8 @@
     <Compile Include="Story.fs" />
     <Compile Include="ZString.fs" />
     <Compile Include="Dictionary.fs" />
+    <Compile Include="object.fs" />
+    <Compile Include="Instruction.fs" />
     <Compile Include="Program.fs" />
   </ItemGroup>
 </Project>
